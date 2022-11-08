@@ -60,7 +60,7 @@ function authUser(req, res, next) {
     return next(err);
   }
 } // end
-
+// decodes but doesnt verify the secret
 module.exports = {
   requireLogin,
   requireAdmin,

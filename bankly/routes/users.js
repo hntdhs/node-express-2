@@ -30,6 +30,7 @@ router.get('/', authUser, requireLogin, async function(req, res, next) {
  *
  * It should return:
  *     {user: {username, first_name, last_name, phone, email}}
+ * it's returningh more than this
  *
  * If user cannot be found, return a 404 err.
  *
@@ -103,11 +104,13 @@ router.delete('/:username', authUser, requireAdmin, async function(
   next
 ) {
   try {
-    User.delete(req.params.username);
+    await User.delete(req.params.username);
     return res.json({ message: 'deleted' });
   } catch (err) {
     return next(err);
   }
 }); // end
+// await?
 
 module.exports = router;
+// go into postgres and change the column
